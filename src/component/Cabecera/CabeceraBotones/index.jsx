@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-
+import { Link, useLocation, useParams } from 'react-router-dom'
 const BotonosContainer = styled.div`
 
 display: flex;
@@ -34,22 +34,38 @@ box-shadow: 0px 0px 12px 4px #2271D1 inset;
 
 }
 
+@media (max-width: 600px) {
+  display: none;
+}
+
 
 
 
 `
 
 const CabeceraBotones = () => {
+
+  const parametro = useLocation();
+  
+  
+  
+  
+
   return (
     <>
     <BotonosContainer>
-    <button className='home'>
-        HOME
-    </button>
-
-    <button className='nuevovideo'>
-        NUEVO VIDEO
-    </button>
+     <Link to={"/"}>
+     {
+      parametro.pathname === "/" ? <button className='home'>HOME</button>: <button className='nuevovideo'>HOME</button>
+     }
+    
+    </Link>
+    <Link to={"/registro"}>
+    {
+      parametro.pathname === "/registro" ? <button className='home'>NUEVO VIDEO</button>: <button className='nuevovideo'>NUEVO VIDEO</button>
+     }
+    
+    </Link>
     </BotonosContainer>
     </>
   )

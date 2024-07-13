@@ -1,0 +1,79 @@
+
+  
+  .crear-tarjeta {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #2c2c2c;
+    color: #fff;
+    border-radius: 8px;
+  }
+  
+  .crear-tarjeta div {
+    margin-bottom: 10px;
+  }
+  
+  .crear-tarjeta label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .crear-tarjeta input,
+  .crear-tarjeta select,
+  .crear-tarjeta textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .crear-tarjeta button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .crear-tarjeta button[type="button"] {
+    background: #f44336;
+  }
+  
+  .tarjetas-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .tarjeta {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tarjeta h3 {
+    margin-top: 0;
+  }
+  
+  .tarjeta img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 600px) {
+    .crear-tarjeta,
+    .tarjeta {
+      padding: 10px;
+    }
+  
+    .crear-tarjeta button,
+    .crear-tarjeta button[type="button"] {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  
