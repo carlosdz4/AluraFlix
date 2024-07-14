@@ -1,6 +1,7 @@
 import React, { useContext  , useState} from 'react'
 import { GlobalContext } from '../Contetx'
 import styled from 'styled-components';
+import {  useNavigate } from 'react-router-dom';
 
 
 const TituloForm = styled.h2`
@@ -93,10 +94,9 @@ cursor: pointer;
 
 }
 
-
-
-
 `
+
+
 
 
 
@@ -105,38 +105,30 @@ cursor: pointer;
 const Fomulario = ({videoModal}) => {
 
     const {categorias , videos , addVideo , titulo, setTitulo , Categoria, setCategoria,
-      linkImagenVideo, setImagen, linkVideo, setVideo ,descripcion, setDescripcion , VideoUpdate  } = useContext(GlobalContext);
+      linkImagenVideo, setImagen, linkVideo, setVideo ,descripcion, setDescripcion , VideoUpdate,setModal  } = useContext(GlobalContext);
     
-    
+      const navigate = useNavigate();
+     
+   
+
 
     const handleSubmit = (e) => {
       
-      if(videoModal == null){
+     
         e.preventDefault();
-
+        console.log("dentro del submit");
         //Esto valida la ID  para no tomar uno repetido y asignar un numero siguiente
-        const ValidarId = videos.map(video => parseInt(video.id, 10));
+        const ValidarId = videos.map((video) => parseInt(video.id, 10));
         const IdMaximo = Math.max(...ValidarId);
-        const id = IdMaximo + 1;
+        const id = (IdMaximo + 1).toString();
         
 
         const nuevoVideo = { titulo, Categoria, linkImagenVideo, linkVideo, descripcion, id };
-      //  addVideo(nuevaTarjeta);
 
-      console.log("dentro del submit");
+        
      addVideo(nuevoVideo);
     
-        setTitulo('');
-        setCategoria('');
-        setImagen('');
-        setVideo('');
-        setDescripcion('');
-      }
-     else{
-      const nuevoVideo = { titulo, Categoria, linkImagenVideo, linkVideo, descripcion, id };
-      VideoUpdate(nuevoVideo);
-      
-     }
+     navigate('/');
       
       };
 
@@ -145,7 +137,7 @@ const Fomulario = ({videoModal}) => {
         
 
 
-{ videoModal == null ? <>
+
   <TituloForm>Crear Tarjeta</TituloForm>
     <Form  onSubmit={handleSubmit}>
    
@@ -156,8 +148,8 @@ const Fomulario = ({videoModal}) => {
       </div>
       <div>
         <label>Categoría</label>
-        <select value={Categoria} onChange={(e) => setCategoria(e.target.value)} required>
-          
+        <select value={Categoria} onChange={(e) => setCategoria(e.target.value)}  required>
+        <option value="">Seleccione una categoría</option>
           {
             categorias.map((e) => { return <option key={e.id} value={e.nombre}>{e.nombre}</option>})
           }
@@ -168,11 +160,11 @@ const Fomulario = ({videoModal}) => {
       <div className='DivTituloCategoria'>
       <div>
         <label>Imagen</label>
-        <input type="text" value={linkImagenVideo} onChange={(e) => setImagen(e.target.value)} placeholder="el enlace es obligatorio" required/>
+        <input type="text" value={linkImagenVideo}   pattern="^https:\/\/i\.ytimg\.com\/vi\/.*$" onChange={(e) => setImagen(e.target.value)} placeholder="el enlace es obligatorio" required/>
       </div>
       <div>
         <label>Video</label>
-        <input type="text" value={linkVideo} onChange={(e) => setVideo(e.target.value)} required />
+        <input type="text" value={linkVideo} pattern="^(https:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$"   onChange={(e) => setVideo(e.target.value)} required />
       </div>
       </div>
       <div>
@@ -192,9 +184,8 @@ const Fomulario = ({videoModal}) => {
       </div>
     </Form> 
     </>
-    : <></>
-    }
-    </>
+    
+    
   )
 }
 

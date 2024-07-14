@@ -28,13 +28,13 @@ const Context = ({children}) => {
       //Get categoria
     useEffect(() => {
         fetch(
-          "https://alurafix-api-fake-d25n.vercel.app/categorias"
+          "http://localhost:3000/categorias"
         )
           .then((res) => res.json())
           .then((data) => setCategorias(data));
       
       fetch(
-        "https://alurafix-api-fake-d25n.vercel.app/videos"
+        "http://localhost:3000/videos"
       )
         .then((res) => res.json())
         .then((data) => setvideo(data));
@@ -46,7 +46,7 @@ const Context = ({children}) => {
       //Post Video
      const addVideo = (video) => {
       
-      fetch('https://alurafix-api-fake.vercel.app/videos', {
+      fetch('http://localhost:3000/videos', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json'
@@ -64,7 +64,7 @@ const Context = ({children}) => {
 
     const Borrarvideo = (id) => {
         
-      fetch(`https://alurafix-api-fake-d25n.vercel.app/videos/${id}`, {
+      fetch(`http://localhost:3000/videos/${id}`, {
         method: 'DELETE'
       })
         .then(() => {
@@ -77,12 +77,12 @@ const Context = ({children}) => {
     };
 
     const VideoUpdate = (videoForm) => {
-      fetch(`https://alurafix-api-fake-d25n.vercel.app/videos/${videoForm.id}`, {
+      fetch(`http://localhost:3000/videos/${videoForm.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(video)
+        body: JSON.stringify(videoForm)
       })
         .then(response => response.json())
         .then(data => {

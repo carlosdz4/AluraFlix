@@ -70,6 +70,11 @@ background: red;
 border-radius: 15px;
 }
 
+.editar:hover {
+background: green;
+border-radius: 15px;
+}
+
 
 `
 
@@ -91,7 +96,7 @@ const Card = ({categoria , videos , Borrarvideo , setModal}) => {
     </Cards>
     <DivInfo $color={color}>
         <span className='borrar' onClick={() => Borrarvideo(video.id)}><AiOutlineDelete />Borrar</span>
-        <span onClick={() => {
+        <span className='editar' onClick={() => {
             setModal({valor: true , video: video});
         }}><RiEdit2Line />Editar</span>
         </DivInfo>

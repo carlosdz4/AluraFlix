@@ -22,6 +22,10 @@ img{
 
 }
 
+@media (max-width: 440px) {
+  display: none;
+}
+
 
 
 `
