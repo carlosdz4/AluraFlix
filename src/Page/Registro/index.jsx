@@ -10,6 +10,7 @@ const RegistroContainer = styled.section`
     flex-wrap: wrap;
     align-items: center;
     background: rgba(0, 0, 0, 0.9);
+    padding: 15px;
    
 
 `
@@ -49,7 +50,7 @@ const Registro = () => {
             <h1>Nuevo video</h1>
             <p>Complete el formulario para crear una nueva tarjeta de video</p>
         </TituloContainer>
-        <Formulario />
+        <Formulario valor="registro"/>
     </RegistroContainer>
     </Context>
   )

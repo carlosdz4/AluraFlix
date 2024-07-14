@@ -36,7 +36,7 @@ const CardsContainer = styled.div`
 const CardContainer = () => {
 
     
-  const {categorias , setCategoria , videos , setvideo , Borrarvideo} = useContext(GlobalContext);
+  const {categorias ,videos , Borrarvideo , setModal} = useContext(GlobalContext);
       
    
 
@@ -52,8 +52,8 @@ const CardContainer = () => {
             
             return <Container>
         <img src={`img/${categoria.nombre}.png`} alt={`${categoria.id}`}  />
-            <CardsContainer>
-                <Card categoria={categoria} videos={videos} Borrarvideo={Borrarvideo} />
+            <CardsContainer key={categoria.id}>
+                <Card categoria={categoria} videos={videos} Borrarvideo={Borrarvideo} setModal={setModal} />
                 
             </CardsContainer>
             </Container>

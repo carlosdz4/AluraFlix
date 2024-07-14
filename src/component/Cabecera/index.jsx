@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from "styled-components";
 import CabeceraBotones from './CabeceraBotones';
+import { Link } from 'react-router-dom';
 
 
 
@@ -30,8 +31,9 @@ const Cabecera = () => {
   return (
    <>
    <Header>
-   
+   <Link to={'/'}>
    <img src="img/logo-cabecera.png" alt="Logo header"  />
+   </Link>
    <CabeceraBotones />
     
    </Header>

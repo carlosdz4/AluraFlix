@@ -3,6 +3,17 @@ import { GlobalContext } from '../Contetx'
 import styled from 'styled-components';
 
 
+const TituloForm = styled.h2`
+   border-width: 1px 0;
+    border-style: solid;
+    border-color: rgba(38, 38, 38, 1); ;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    width: 70%;
+    
+`
 
 const Form = styled.form`
      display: flex;
@@ -12,13 +23,7 @@ const Form = styled.form`
   color: white;
   flex-direction: column;
 
-  h2{
-    border-width: 1px 0;
-    border-style: solid;
-    border-color: rgba(38, 38, 38, 1); ;
-    padding: 10px;
-    width: 100%;
-  }
+ 
  
   div{
     display: flex;
@@ -97,15 +102,16 @@ cursor: pointer;
 
 
 
-const Fomulario = () => {
+const Fomulario = ({videoModal}) => {
 
-    const {categorias , videos , addVideo ,deleteTarjeta} = useContext(GlobalContext);
-    const [titulo, setTitulo] = useState('');
-    const [Categoria, setCategoria] = useState('');
-    const [linkImagenVideo, setImagen] = useState('');
-    const [linkVideo, setVideo] = useState('');
-    const [descripcion, setDescripcion] = useState('');
+    const {categorias , videos , addVideo , titulo, setTitulo , Categoria, setCategoria,
+      linkImagenVideo, setImagen, linkVideo, setVideo ,descripcion, setDescripcion , VideoUpdate  } = useContext(GlobalContext);
+    
+    
+
     const handleSubmit = (e) => {
+      
+      if(videoModal == null){
         e.preventDefault();
 
         //Esto valida la ID  para no tomar uno repetido y asignar un numero siguiente
@@ -125,21 +131,32 @@ const Fomulario = () => {
         setImagen('');
         setVideo('');
         setDescripcion('');
+      }
+     else{
+      const nuevoVideo = { titulo, Categoria, linkImagenVideo, linkVideo, descripcion, id };
+      VideoUpdate(nuevoVideo);
+      
+     }
+      
       };
 
   return (<>
 
-    
-    <Form onSubmit={handleSubmit}>
-    <h2>Crear Tarjeta</h2>
+        
+
+
+{ videoModal == null ? <>
+  <TituloForm>Crear Tarjeta</TituloForm>
+    <Form  onSubmit={handleSubmit}>
+   
     <div className='DivTituloCategoria'>
       <div>
         <label>Título</label>
-        <input type="text" value={titulo} onChange={(e) => setTitulo(e.target.value)} />
+        <input type="text" value={titulo} onChange={(e) => setTitulo(e.target.value)} required/>
       </div>
       <div>
         <label>Categoría</label>
-        <select value={Categoria} onChange={(e) => setCategoria(e.target.value)}>
+        <select value={Categoria} onChange={(e) => setCategoria(e.target.value)} required>
           
           {
             categorias.map((e) => { return <option key={e.id} value={e.nombre}>{e.nombre}</option>})
@@ -151,11 +168,11 @@ const Fomulario = () => {
       <div className='DivTituloCategoria'>
       <div>
         <label>Imagen</label>
-        <input type="text" value={linkImagenVideo} onChange={(e) => setImagen(e.target.value)} placeholder="el enlace es obligatorio" />
+        <input type="text" value={linkImagenVideo} onChange={(e) => setImagen(e.target.value)} placeholder="el enlace es obligatorio" required/>
       </div>
       <div>
         <label>Video</label>
-        <input type="text" value={linkVideo} onChange={(e) => setVideo(e.target.value)} />
+        <input type="text" value={linkVideo} onChange={(e) => setVideo(e.target.value)} required />
       </div>
       </div>
       <div>
@@ -173,7 +190,10 @@ const Fomulario = () => {
         setDescripcion('');
       }}>Limpiar</button>
       </div>
-    </Form>
+    </Form> 
+    </>
+    : <></>
+    }
     </>
   )
 }

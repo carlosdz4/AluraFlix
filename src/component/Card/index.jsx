@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { AiOutlineDelete } from "react-icons/ai";
 import { RiEdit2Line } from "react-icons/ri";
 import { GlobalContext } from '../Contetx';
+import ModalEditar from '../ModalEditar';
 
 const Contenedor = styled.div`
     display: flex;
@@ -73,7 +74,7 @@ border-radius: 15px;
 `
 
 
-const Card = ({categoria , videos , Borrarvideo}) => {
+const Card = ({categoria , videos , Borrarvideo , setModal}) => {
 
    const {color , nombre} = categoria;
    
@@ -90,7 +91,9 @@ const Card = ({categoria , videos , Borrarvideo}) => {
     </Cards>
     <DivInfo $color={color}>
         <span className='borrar' onClick={() => Borrarvideo(video.id)}><AiOutlineDelete />Borrar</span>
-        <span><RiEdit2Line />Editar</span>
+        <span onClick={() => {
+            setModal({valor: true , video: video});
+        }}><RiEdit2Line />Editar</span>
         </DivInfo>
         </Contenedor>
     })

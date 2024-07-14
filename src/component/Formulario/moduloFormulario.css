@@ -1,79 +1,83 @@
-
-  
-  .crear-tarjeta {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #2c2c2c;
-    color: #fff;
-    border-radius: 8px;
-  }
-  
-  .crear-tarjeta div {
-    margin-bottom: 10px;
-  }
-  
-  .crear-tarjeta label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .crear-tarjeta input,
-  .crear-tarjeta select,
-  .crear-tarjeta textarea {
+.registrar {
+     display: flex;
+     width: 70%;
+    
+     
+  color: white;
+  flex-direction: column;
+}
+.registrar h2{
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: rgba(38, 38, 38, 1); ;
+    padding: 10px;
     width: 100%;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
   }
-  
-  .crear-tarjeta button {
-    margin-right: 10px;
-    padding: 10px 20px;
-    background: #4caf50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
+ 
+  .registrar div{
+    display: flex;
+    flex-direction: column;
+   
+  }
+
+  .registrar .DivTituloCategoria{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    flex-wrap: wrap;
+  }
+
+  .registrar input, select , textarea{
+    border: 3px solid var(--Dark-Grey, rgba(38, 38, 38, 1));
+    background: rgba(25, 25, 25, 1);
+    color: white;
+    padding: 15px;
+    
+  }
+
+  .registrar textarea{
+    width: 50%;
+    height: 190px;
+    border-radius: 10px;
+  }
+
+  .registrar label{
+    margin: 5px;
+  }
+
+
+  .registrar .botones{
+    display: flex;
+    margin-top: 50px;
+    flex-direction: row;
+    width: 50%;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+ 
+.registrar button{
+    font-size: 20px;
+font-weight: 900;
+line-height: 24px;
+text-align: center;
+
+width: 180.13px;
+height: 54px;
+background-color: transparent;
+border-radius: 10px;
+}
+
+.registrar .guardar{
+    
+    color: white;
+border: 2px solid var(--Blue, #2271D1);
+box-shadow: 0px 0px 12px 4px #2271D1 inset;
+cursor: pointer;
+}
+.registrar .limpiar{
+    border: 2px solid #F5F5F5;
+    color: #F5F5F5;
+    border: 2px solid var(--white, #F5F5F5);
     cursor: pointer;
-  }
-  
-  .crear-tarjeta button[type="button"] {
-    background: #f44336;
-  }
-  
-  .tarjetas-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .tarjeta {
-    background: #fff;
-    padding: 20px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .tarjeta h3 {
-    margin-top: 0;
-  }
-  
-  .tarjeta img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  @media (max-width: 600px) {
-    .crear-tarjeta,
-    .tarjeta {
-      padding: 10px;
-    }
-  
-    .crear-tarjeta button,
-    .crear-tarjeta button[type="button"] {
-      width: 100%;
-      margin-top: 10px;
-    }
-  }
-  
+
+}

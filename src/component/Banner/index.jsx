@@ -71,12 +71,18 @@ text-align: left;
 `
 
 const IframeContainer = styled.div`
-  iframe {
-    border: 5px solid #6BD1FF;
+  a {
+    
+
+}
+
+img{
+  width: 560px;
+  height: 315px;
+  border: 5px solid #6BD1FF;
    
     border-radius: 5%;
     box-shadow: 0px 5px 29px 0px #2271D1B2;
-
 }
 `
 
@@ -97,10 +103,14 @@ const Banner = () => {
             </p>
           </TextContainer>
           <IframeContainer>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/GJfOSoaXk4s?si=6i5ftwYT_FaOR10A" 
+            <a href="https://www.youtube.com/embed/GJfOSoaXk4s?si=6i5ftwYT_FaOR10A">
+                <img src="https://i.ytimg.com/vi/GJfOSoaXk4s/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAKpxz6vMwTw26HQyprrrwHFadQ2g"
+                 alt="imagen banner" />
+            </a>
+          {/* <iframe className='framecontenedor' width="560" height="315" src="https://www.youtube.com/embed/GJfOSoaXk4s?si=6i5ftwYT_FaOR10A" 
           title="YouTube video player" frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> */}
           </IframeContainer>
             
         </BannerContainer>
